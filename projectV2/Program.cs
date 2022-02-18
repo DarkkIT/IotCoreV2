@@ -35,15 +35,19 @@ namespace projectV2
             ////-----------------------------------------------------------------Servo Motor
             Console.WriteLine("Start Servo");
             var servo = new ServoController();
+
             servo.GoLeft();
+            //servo.GoMid(2);
+            //servo.Wait(500);
             //servo.GoRight();
+            //servo.GoMid(1);
+
 
             ////-----------------------------------------------------------------DC Morot
             //Console.WriteLine("Start DC Motor");
             //var motor = new DCMotorController();
             //motor.StartMotor();
             //motor.StopMotor();
-
 
 
             Console.WriteLine("Test End");

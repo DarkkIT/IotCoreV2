@@ -10,8 +10,7 @@
         "dependencies": {
           "Iot.Device.Bindings": "1.5.0",
           "IronPython": "2.7.11",
-          "SixLabors.ImageSharp": "1.0.4",
-          "System.Memory": "4.5.4"
+          "SixLabors.ImageSharp": "1.0.4"
         },
         "runtime": {
           "projectV2.dll": {}
