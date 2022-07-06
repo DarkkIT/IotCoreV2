@@ -1,30 +1,38 @@
 ﻿using System;
-using System.Device.Pwm;
+using System.Device.I2c;
+using Iot.Device.MotorHat;
 
 namespace projectV2
 {
     public class DCMotorController : BaseClass
     {
-        //public void StartMotor()
-        //{
-        //    using (var motorHat = new MotorHat(1600, 0x40))
-        //    {
-        //        Console.WriteLine("Test01");
-        //        var motor = motorHat.CreateDCMotor(1);
-        //        Console.WriteLine("Test02");
-        //        motor.Speed = 1;
-        //        Console.WriteLine("Test03");
-        //    }
-        //}
+        public void StartMotor()
+        {
+            Console.WriteLine("Test00");
+            var i2cConectionSeting = new I2cConnectionSettings(busId: 1, deviceAddress: 0x5f);
 
-        //public void StopMotor()
-        //{
-        //    using (var motorHat = new MotorHat(1500, 0x40))
-        //    {
-        //        var motor = motorHat.CreateDCMotor(1);
+            using (var motorHat = new MotorHat(i2cConectionSeting, 1600d))
+            {
+                Console.WriteLine("Test01");
 
-        //        motor.Speed = 0;
-        //    }
-        //}
+                var motor = motorHat.CreateDCMotor(1);
+
+                Console.WriteLine("Test02");
+
+                motor.Speed = 1;
+
+                Wait(1500);
+
+                motor.Speed = 0;
+
+                Console.WriteLine("Test03");
+            }
+
+        }
+
+        public void StartMotor1()
+        {
+
+        }
     }
 }

@@ -1,14 +1,12 @@
-﻿using Iot.Device.ServoMotor;
-using SixLabors.ImageSharp;
+﻿using SixLabors.ImageSharp;
 using System;
-using System.Device.Pwm;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace projectV2
 {
     public class Program
     {
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Start test");
@@ -17,15 +15,13 @@ namespace projectV2
             //poeHatController.StartHatLcd();
 
             ////-----------------------------------------------------------------LCD
-            //Console.WriteLine("Start LCD");
-            //var lcd = new LcdController();
-            //lcd.SetBackground(Color.DarkGreen);
-            //lcd.Wait(1000);
-            //lcd.Write("Test One", "Test Two", Color.DarkCyan, 1000, 1);
-            //lcd.Wait(1000);
-            //lcd.Write("Test Tree", "Test Four", Color.DarkGreen, 1000, 1);
-            //lcd.Wait(1000);
-            //lcd.SetBackground(Color.Red);
+            Console.WriteLine("Start LCD");
+            var lcd = new LcdController();            
+
+            lcd.Write("Go Move", "...........", Color.DarkGreen, 100, 1);
+            lcd.Wait(100);
+
+            lcd.SetBackground(Color.Green);
 
             ////-----------------------------------------------------------------Camera
             //Console.WriteLine("Start Camera");
@@ -33,14 +29,11 @@ namespace projectV2
             //await camera.TakePicture();
 
             ////-----------------------------------------------------------------Servo Motor
+
             Console.WriteLine("Start Servo");
             var servo = new ServoController();
 
-            servo.GoLeft();
-            //servo.GoMid(2);
-            //servo.Wait(500);
-            //servo.GoRight();
-            //servo.GoMid(1);
+            servo.StartServo();
 
 
             ////-----------------------------------------------------------------DC Morot

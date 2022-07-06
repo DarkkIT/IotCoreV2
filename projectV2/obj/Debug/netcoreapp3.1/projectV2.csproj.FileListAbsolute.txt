@@ -19,7 +19,6 @@ D:\VisualStudio\projectV2\projectV2\obj\Debug\netcoreapp3.1\projectV2.csproj.Cop
 D:\VisualStudio\projectV2\projectV2\obj\Debug\netcoreapp3.1\projectV2.dll
 D:\VisualStudio\projectV2\projectV2\obj\Debug\netcoreapp3.1\projectV2.pdb
 D:\VisualStudio\projectV2\projectV2\obj\Debug\netcoreapp3.1\projectV2.genruntimeconfig.cache
-D:\VisualStudio\projectV2\projectV2\obj\Debug\netcoreapp3.1\projectV2.csprojAssemblyReference.cache
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\Microsoft.Dynamic.dll
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\Microsoft.Scripting.Metadata.dll
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\Microsoft.Scripting.dll
@@ -53,3 +52,8 @@ D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\runtimes\win\lib\net
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\VisualStudio\projectV2\projectV2\obj\Debug\netcoreapp3.1\projectV2.csproj.AssemblyReference.cache
+D:\VisualStudio\projectV2\projectV2\obj\Debug\netcoreapp3.1\projectV2.GeneratedMSBuildEditorConfig.editorconfig
+D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\System.Text.Json.dll

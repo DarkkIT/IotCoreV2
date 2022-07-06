@@ -7,9 +7,9 @@ namespace projectV2
 {
     public class BaseClass
     {
-        public void Wait(int waitTime)
+        public void Wait(int milliSeconds)
         {
-            Thread.Sleep(waitTime);
+            Thread.Sleep(milliSeconds);
         }
     }
 }
