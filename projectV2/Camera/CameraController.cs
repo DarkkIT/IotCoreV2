@@ -2,6 +2,7 @@
 //using MMALSharp.Common;
 //using MMALSharp.Common.Utility;
 //using MMALSharp.Handlers;
+using projectV2.Others;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 //using Unosquare.RaspberryIO.Camera;
 //using Unosquare.WiringPi;
 
-namespace projectV2
+namespace projectV2.Camera
 {
     public class CameraController : BaseClass
     {

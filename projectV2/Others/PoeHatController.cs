@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using Microsoft.Scripting.Hosting;
 using IronPython.Hosting;
 
-namespace projectV2
+namespace projectV2.Others
 {
     public class PoeHatController : BaseClass
     {

@@ -1,6 +1,6 @@
-﻿namespace projectV2
+﻿namespace projectV2.GlobalConstants
 {
-    public class Constants
+    public class Degrees
     {
         //Servo degrees
         public const double G0 = 0.030;
@@ -11,6 +11,11 @@
         public const double G112 = 0.089;
         public const double G135 = 0.100;
         public const double G157 = 0.115;
-        public const double G180 = 0.140;
+        public const double G180 = 0.130;
+
+        //FrontWeels
+        public const double Middle = 0.083;
+        public const double Left = 0.095;
+        public const double Right = 0.073;
     }
 }
