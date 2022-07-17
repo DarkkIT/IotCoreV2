@@ -43,7 +43,7 @@ namespace projectV2.Motions
                 {
                     currentPosition += 0.0005;
 
-                    if (currentPosition == endPosition || currentPosition > endPosition)
+                    if (currentPosition > endPosition)
                     {
                         if (endPosition == FrontWheels.Middle) servoPwm.DutyCycle = endPosition;
                         break;
@@ -53,7 +53,7 @@ namespace projectV2.Motions
                 {
                     currentPosition -= 0.0005;
 
-                    if (currentPosition == endPosition || currentPosition < endPosition)
+                    if (currentPosition < endPosition)
                     {
                         if (endPosition == FrontWheels.Middle) servoPwm.DutyCycle = endPosition;
                         break;
@@ -64,7 +64,7 @@ namespace projectV2.Motions
             return currentPosition;
         }
 
-        //Calibrate servos before to the middle position before start operationg
+        ////Calibrate servos to the middle position before start operationg
         public async Task CalibrateSevos()
         {
             var i2cDevice = I2cDevice.Create(new I2cConnectionSettings(busId: 1, deviceAddress: 0x40));

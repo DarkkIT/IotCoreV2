@@ -24,32 +24,35 @@ namespace projectV2.StartUp
             ////Initialization
             var logic = new LogicController();
             var controllers = new Initializations();
-
+            var lcd = controllers.Lcd;
 
             ////Dtos
             var menualMode = false;
-            ConsoleKeyInfo key;
             ConsoleKeyInfo keyTemp = new ConsoleKeyInfo();
+            ConsoleKeyInfo key;
 
 
             ////Logic
-            logic.StartLogic(controllers);       
+            logic.StartLogic(controllers);
 
 
             ////Console readinds
+            lcd.Write("Write command", $"..............", Color.White);
+
             while (true)
             {
                 key = Console.ReadKey(false);
                 Console.WriteLine();
                 if (key != keyTemp)
                 {
-                    controllers.Lcd.Write("Key pressed", $"{key.Key.ToString()}", Color.White);
+                    lcd.Write("Key pressed", $"{key.Key}", Color.White);
                 }
                 keyTemp = key;
 
                 if (key.Key == ConsoleKey.F5)
                 {
-                    Console.WriteLine("Manually mode ON");
+                    Console.WriteLine("Manual mode ON");
+                    lcd.Write("Manual mode ON", $"{key.Key}", Color.White);
                     menualMode = true;
                 }
                 else if (key.Key == ConsoleKey.F12)
@@ -65,7 +68,7 @@ namespace projectV2.StartUp
                     Console.WriteLine();
                     if (key != keyTemp)
                     {
-                        controllers.Lcd.Write("AM Key pressed", $"{key.Key.ToString()}", Color.White);
+                        lcd.Write("MM Key pressed", $"{key.Key}", Color.White);
                     }
                     keyTemp = key;
 
@@ -80,13 +83,20 @@ namespace projectV2.StartUp
                     }
                     else if (key.Key == ConsoleKey.F5)
                     {
-                        Console.WriteLine("Manually mode OFF");
+                        Console.WriteLine("Manual mode OFF");
+                        lcd.Write("Manual mode OFF", $"{key.Key}", Color.White);
                         menualMode = false;
                     }
-
-                    await Task.Delay(10);
                 }
             }
+
+            await Task.Delay(2000);
+
+            lcd.Write("Program End", $"{key.Key}", Color.White);
+
+            await Task.Delay(2000);
+
+            lcd.Clear();
         }
     }
 }

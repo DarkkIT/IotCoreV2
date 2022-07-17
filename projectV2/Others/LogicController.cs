@@ -16,46 +16,51 @@ namespace projectV2.Others
             ////Dtos
             var lcdText = string.Empty;
             ConsoleKey command = ConsoleKey.Escape;
-            var servoPositions = controllers.ServoPositions;
             var sensCommands = controllers.SensCommands;
-            var sensCommandsTemp = controllers.SensCommandsTemp;
             var lcd = controllers.Lcd;
             var servo = controllers.Servo;
 
+
             ////Calibrations
             Console.WriteLine("Calibrations");
-            controllers.Lcd.Write("Calibrations", "Working on", Color.White);
+            lcd.Write("Calibrations", "Working on", Color.White);
             await controllers.Servo.CalibrateSevos();
-            await Task.Delay(1000);
 
             ////Logic
             while (true)
             {
-                if (Action(sensCommands, sensCommandsTemp))
+                if (Action(controllers))
                 {
-                    Wait(100);
                     continue;
                 }
-
-                sensCommandsTemp = sensCommands;
-
+                Console.WriteLine("test01");
+                TempData(controllers);
+                Console.WriteLine("test02");
                 command = sensCommands.ManualServoControl;
 
                 if (command == ConsoleKey.LeftArrow)
                 {
-                    await servo.Start(0, servoPositions, FrontWheels.FullLeft);
+                    Console.WriteLine("test1");
+                    servo.Start(0, controllers.ServoPositions, FrontWheels.FullLeft);
                     lcdText = " Go Left";
-                    command = ConsoleKey.Escape;
+                    Console.WriteLine("test2");
                 }
                 else if (command == ConsoleKey.RightArrow)
                 {
-                    await servo.Start(0, servoPositions, FrontWheels.FullRight);
+                    Console.WriteLine("test3");
+                    servo.Start(0, controllers.ServoPositions, FrontWheels.FullRight);
                     lcdText = "Go Right";
-                    command = ConsoleKey.Escape;
+                    Console.WriteLine("test4");
                 }
 
-                lcd.Write($"Console - {sensCommands.ManualServoControl}", lcdText, Color.White);
+                Console.WriteLine(lcdText);
             }
+        }
+
+        public void TempData(Initializations controllers)
+        {
+            controllers.SensCommandsTemp = controllers.SensCommands;
+            Wait(100);
         }
     }
 }

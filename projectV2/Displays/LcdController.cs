@@ -33,5 +33,15 @@ namespace projectV2.Displays
                 lcd.SetBacklightColor(color);
             }
         }
+
+        public async Task Clear()
+        {
+            var i2cLcdDevice = I2cDevice.Create(new I2cConnectionSettings(busId: 1, deviceAddress: 0x3E));
+            var i2cRgbDevice = I2cDevice.Create(new I2cConnectionSettings(busId: 1, deviceAddress: 0x60));
+            using LcdRgb lcd = new LcdRgb(new Size(16, 2), i2cLcdDevice, i2cRgbDevice);
+            {
+                lcd.Clear();
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using projectV2.Models;
+using System;
 using System.Collections;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,16 +10,17 @@ namespace projectV2.Others
     {
         public void Wait(int milliSeconds)
         {
-            Thread.Sleep(milliSeconds);
+            Task.Delay(milliSeconds);
         }
 
-        public bool Action(SensCommands sensCommands, SensCommands sensCommandsTemp)
+        public bool Action(Initializations controllers)
         {
-            if (sensCommands.Equals(sensCommandsTemp))
+            if (controllers.SensCommands.Equals(controllers.SensCommandsTemp))
             {
                 return true;
             }
 
+            Wait(100);
             return false;
         }
     }
