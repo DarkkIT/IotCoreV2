@@ -1,9 +1,8 @@
-﻿using projectV2.Displays;
-using projectV2.GlobalConstants;
+﻿using projectV2.GlobalConstants;
 using projectV2.Models;
-using projectV2.Motions;
 using SixLabors.ImageSharp;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace projectV2.Others
@@ -15,10 +14,11 @@ namespace projectV2.Others
 
             ////Dtos
             var lcdText = string.Empty;
-            ConsoleKey command = ConsoleKey.Escape;
+            ConsoleKey command;
             var sensCommands = controllers.SensCommands;
             var lcd = controllers.Lcd;
             var servo = controllers.Servo;
+            var sensCommandsTemp = ConsoleKey.Escape;
 
 
             ////Calibrations
@@ -29,38 +29,40 @@ namespace projectV2.Others
             ////Logic
             while (true)
             {
-                if (Action(controllers))
+                if (CheckStatusCommand(controllers, sensCommandsTemp))
                 {
                     continue;
                 }
-                Console.WriteLine("test01");
-                TempData(controllers);
-                Console.WriteLine("test02");
+
+                sensCommandsTemp = TempData(controllers, sensCommandsTemp);
+
                 command = sensCommands.ManualServoControl;
 
                 if (command == ConsoleKey.LeftArrow)
                 {
-                    Console.WriteLine("test1");
-                    servo.Start(0, controllers.ServoPositions, FrontWheels.FullLeft);
-                    lcdText = " Go Left";
-                    Console.WriteLine("test2");
+                    await servo.Start(0, controllers.ServoPositions, FrontWheels.FullLeft);
+                    lcdText = "Turn Left";
                 }
                 else if (command == ConsoleKey.RightArrow)
                 {
-                    Console.WriteLine("test3");
-                    servo.Start(0, controllers.ServoPositions, FrontWheels.FullRight);
-                    lcdText = "Go Right";
-                    Console.WriteLine("test4");
+                    await servo.Start(0, controllers.ServoPositions, FrontWheels.FullRight);
+                    lcdText = "Turn Right";
+                }
+                else if (command == ConsoleKey.Spacebar)
+                {
+                    await servo.Start(0, controllers.ServoPositions, FrontWheels.Middle);
+                    lcdText = "Center";
                 }
 
                 Console.WriteLine(lcdText);
             }
         }
 
-        public void TempData(Initializations controllers)
+        public ConsoleKey TempData(Initializations controllers, ConsoleKey sensCommandsTemp)
         {
-            controllers.SensCommandsTemp = controllers.SensCommands;
-            Wait(100);
+            sensCommandsTemp = controllers.SensCommands.ManualServoControl;
+
+            return sensCommandsTemp;
         }
     }
 }

@@ -20,6 +20,6 @@ try:
         POE.POE_HAT_Display(43)
         time.sleep(1)
         
-except KeyboardInterrupt:    
+except KeyboardInterrupt:
     print("ctrl + c:")
     POE.FAN_OFF()

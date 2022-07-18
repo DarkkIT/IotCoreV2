@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using projectV2.Others;
 using SixLabors.ImageSharp;
+using System.Collections.Generic;
 
 namespace projectV2.StartUp
 {
@@ -25,11 +26,16 @@ namespace projectV2.StartUp
             var logic = new LogicController();
             var controllers = new Initializations();
             var lcd = controllers.Lcd;
+            var python = controllers.PythonController;
 
             ////Dtos
             var menualMode = false;
             ConsoleKeyInfo keyTemp = new ConsoleKeyInfo();
             ConsoleKeyInfo key;
+
+
+            ////Start python scripts
+            //await python.Start(); //Not working
 
 
             ////Logic
@@ -38,6 +44,7 @@ namespace projectV2.StartUp
 
             ////Console readinds
             lcd.Write("Write command", $"..............", Color.White);
+            Console.WriteLine("Write command");
 
             while (true)
             {
@@ -72,14 +79,15 @@ namespace projectV2.StartUp
                     }
                     keyTemp = key;
 
+                    //Add manual commands
+                    var commands = new List<ConsoleKey>();
+                    commands.Add(ConsoleKey.LeftArrow);
+                    commands.Add(ConsoleKey.RightArrow);
+                    commands.Add(ConsoleKey.Spacebar);
 
-                    if (key.Key == ConsoleKey.LeftArrow)
+                    if (commands.Contains(key.Key))
                     {
-                        controllers.SensCommands.ManualServoControl = ConsoleKey.LeftArrow;
-                    }
-                    else if (key.Key == ConsoleKey.RightArrow)
-                    {
-                        controllers.SensCommands.ManualServoControl = ConsoleKey.RightArrow;
+                        await AddCommand(controllers, key.Key, Mode.Manual);
                     }
                     else if (key.Key == ConsoleKey.F5)
                     {
@@ -90,13 +98,21 @@ namespace projectV2.StartUp
                 }
             }
 
-            await Task.Delay(2000);
+            //await Task.Delay(2000);
 
-            lcd.Write("Program End", $"{key.Key}", Color.White);
+            //lcd.Write("Program End", $"{key.Key}", Color.White);
 
-            await Task.Delay(2000);
+            //await Task.Delay(2000);
 
-            lcd.Clear();
+            //lcd.Clear();
+        }
+
+        public async Task AddCommand(Initializations controllers, ConsoleKey command, Mode mode)
+        {
+            if (mode == Mode.Manual)
+            {
+                controllers.SensCommands.ManualServoControl = command;
+            }
         }
     }
 }

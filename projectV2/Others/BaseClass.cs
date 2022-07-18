@@ -13,14 +13,13 @@ namespace projectV2.Others
             Task.Delay(milliSeconds);
         }
 
-        public bool Action(Initializations controllers)
+        public bool CheckStatusCommand(Initializations controllers, ConsoleKey sensCommandsTemp)
         {
-            if (controllers.SensCommands.Equals(controllers.SensCommandsTemp))
+            if (controllers.SensCommands.ManualServoControl.Equals(sensCommandsTemp))
             {
                 return true;
             }
 
-            Wait(100);
             return false;
         }
     }

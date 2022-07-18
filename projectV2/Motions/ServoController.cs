@@ -6,6 +6,7 @@ using projectV2.Others;
 using System;
 using System.Device.I2c;
 using System.Device.Pwm;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace projectV2.Motions
@@ -34,29 +35,46 @@ namespace projectV2.Motions
         {
             Console.WriteLine("Start servo");
 
+            var sw = new Stopwatch();
+            sw.Start();
+
             while (true)
             {
                 servoPwm.DutyCycle = currentPosition;
-                Wait(15);
 
-                if (currentPosition < endPosition)
+                if (sw.ElapsedMilliseconds % 2 == 0)
                 {
-                    currentPosition += 0.0005;
-
-                    if (currentPosition > endPosition)
-                    {
-                        if (endPosition == FrontWheels.Middle) servoPwm.DutyCycle = endPosition;
-                        break;
-                    }
-                }
-                else
-                {
-                    currentPosition -= 0.0005;
-
                     if (currentPosition < endPosition)
                     {
-                        if (endPosition == FrontWheels.Middle) servoPwm.DutyCycle = endPosition;
-                        break;
+                        currentPosition += 0.0006;
+
+                        if (currentPosition >= endPosition)
+                        {
+                            if (endPosition == FrontWheels.Middle)
+                            {
+                                currentPosition += 0.0006;
+                                servoPwm.DutyCycle = currentPosition;
+                            }
+
+                            sw.Stop();
+                            break;
+                        }
+                    }
+                    else if (currentPosition > endPosition)
+                    {
+                        currentPosition -= 0.0006;
+
+                        if (currentPosition <= endPosition)
+                        {
+                            if (endPosition == FrontWheels.Middle)
+                            {
+                                currentPosition -= 0.0006;
+                                servoPwm.DutyCycle = currentPosition;
+                            }
+
+                            sw.Stop();
+                            break;
+                        }
                     }
                 }
             }

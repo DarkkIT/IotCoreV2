@@ -1,6 +1,7 @@
 ﻿using projectV2.Camera;
 using projectV2.Displays;
 using projectV2.Motions;
+using projectV2.python;
 
 namespace projectV2.Models
 {
@@ -11,8 +12,7 @@ namespace projectV2.Models
         public ServoController Servo { get; set; } = new ServoController();
         public CameraController Camera { get; set; } = new CameraController();
         public SensCommands SensCommands { get; set; } = new SensCommands();
-        public SensCommands SensCommandsTemp { get; set; } = new SensCommands();
-
         public ServoPositions ServoPositions { get; set; } = new ServoPositions();
+        public PythonController PythonController { get; set; } = new PythonController();
     }
 }
