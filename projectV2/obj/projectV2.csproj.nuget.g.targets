@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.packaging.tools\1.0.0-preview2-25401-01\build\Microsoft.Packaging.Tools.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.packaging.tools\1.0.0-preview2-25401-01\build\Microsoft.Packaging.Tools.targets')" />
+    <Import Project="$(NuGetPackageRoot)netstandard.library\2.0.0-preview2-25401-01\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('$(NuGetPackageRoot)netstandard.library\2.0.0-preview2-25401-01\build\netstandard2.0\NETStandard.Library.targets')" />
+    <Import Project="$(NuGetPackageRoot)netstandard.library.netframework\2.0.0-preview2-25405-01\build\net461\NETStandard.Library.NETFramework.targets" Condition="Exists('$(NuGetPackageRoot)netstandard.library.netframework\2.0.0-preview2-25405-01\build\net461\NETStandard.Library.NETFramework.targets')" />
     <Import Project="$(NuGetPackageRoot)mono.unix\7.1.0-final.1.21458.1\build\Mono.Unix.targets" Condition="Exists('$(NuGetPackageRoot)mono.unix\7.1.0-final.1.21458.1\build\Mono.Unix.targets')" />
   </ImportGroup>
 </Project>

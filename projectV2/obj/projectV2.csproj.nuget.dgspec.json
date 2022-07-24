@@ -52,9 +52,17 @@
               "target": "Package",
               "version": "[3.4.0-beta1, )"
             },
+            "MMALSharp": {
+              "target": "Package",
+              "version": "[0.6.0, )"
+            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "NETStandard.Library.NETFramework": {
+              "target": "Package",
+              "version": "[2.0.0-preview2-25405-01, )"
             },
             "SixLabors.ImageSharp": {
               "target": "Package",
@@ -63,6 +71,14 @@
             "System.Device.Gpio": {
               "target": "Package",
               "version": "[2.1.0, )"
+            },
+            "System.Runtime": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            },
+            "Unosquare.Raspberry.IO": {
+              "target": "Package",
+              "version": "[0.27.1, )"
             }
           },
           "imports": [

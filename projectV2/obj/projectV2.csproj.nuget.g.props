@@ -14,4 +14,7 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
     <SourceRoot Include="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)netstandard.library.netframework\2.0.0-preview2-25405-01\build\net461\NETStandard.Library.NETFramework.props" Condition="Exists('$(NuGetPackageRoot)netstandard.library.netframework\2.0.0-preview2-25405-01\build\net461\NETStandard.Library.NETFramework.props')" />
+  </ImportGroup>
 </Project>

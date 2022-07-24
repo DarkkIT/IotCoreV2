@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using projectV2.Others;
 using SixLabors.ImageSharp;
 using System.Collections.Generic;
+using projectV2.Motions;
 
 namespace projectV2.StartUp
 {
@@ -34,17 +35,27 @@ namespace projectV2.StartUp
             ConsoleKeyInfo key;
 
 
+            ////Add manual commands
+            var commands = new List<ConsoleKey>();
+            commands.Add(ConsoleKey.LeftArrow);
+            commands.Add(ConsoleKey.RightArrow);
+            commands.Add(ConsoleKey.Spacebar);
+            commands.Add(ConsoleKey.UpArrow);
+            commands.Add(ConsoleKey.DownArrow);
+
+
+
             ////Start python scripts
             //await python.Start(); //Not working
 
 
-            ////Logic
+            //Logic
             logic.StartLogic(controllers);
 
 
             ////Console readinds
-            lcd.Write("Write command", $"..............", Color.White);
-            Console.WriteLine("Write command");
+            lcd.Write("Set Mode:", $"..............", Color.White);
+            Console.WriteLine("Set Mode:");
 
             while (true)
             {
@@ -79,12 +90,6 @@ namespace projectV2.StartUp
                     }
                     keyTemp = key;
 
-                    //Add manual commands
-                    var commands = new List<ConsoleKey>();
-                    commands.Add(ConsoleKey.LeftArrow);
-                    commands.Add(ConsoleKey.RightArrow);
-                    commands.Add(ConsoleKey.Spacebar);
-
                     if (commands.Contains(key.Key))
                     {
                         await AddCommand(controllers, key.Key, Mode.Manual);
@@ -98,9 +103,9 @@ namespace projectV2.StartUp
                 }
             }
 
-            //await Task.Delay(2000);
+            await Task.Delay(2000);
 
-            //lcd.Write("Program End", $"{key.Key}", Color.White);
+            lcd.Write("End Program", $"{key.Key}", Color.White);
 
             //await Task.Delay(2000);
 
@@ -113,6 +118,11 @@ namespace projectV2.StartUp
             {
                 controllers.SensCommands.ManualServoControl = command;
             }
+            else if (mode == Mode.Auto)
+            {
+                ///Add auto
+            }
+
         }
     }
 }

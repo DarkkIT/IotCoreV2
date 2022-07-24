@@ -12,5 +12,7 @@ namespace projectV2.Models
 
 
         public ConsoleKey ManualServoControl { get; set; } = ConsoleKey.Escape;
+
+        public double ManualDcMotorControl { get; set; } = 0.0;
     }
 }

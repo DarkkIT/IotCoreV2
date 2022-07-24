@@ -77,3 +77,6 @@ D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\runtimes\osx-arm64\n
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libMono.Unix.dylib
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\runtimes\tvos-arm64\native\libMono.Unix.a
 D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\runtimes\tvossimulator-x64\native\libMono.Unix.a
+D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\MMALSharp.dll
+D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\MMALSharp.Common.dll
+D:\VisualStudio\projectV2\projectV2\bin\Debug\netcoreapp3.1\MMALSharp.Processing.dll
